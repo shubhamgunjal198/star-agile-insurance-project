@@ -29,9 +29,9 @@
         source: pull
         
     - name: Remove existing container if any
-  docker_container:
-    name: insure-me
-    state: absent
+      docker_container:
+        name: insure-me
+        state: absent
 
     - name: Run Insurance App container
       docker_container:
