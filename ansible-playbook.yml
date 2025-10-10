@@ -27,6 +27,11 @@
         name: shubhamgunjal1619/insure-me
         tag: "3.0"
         source: pull
+        
+    - name: Remove existing container if any
+  docker_container:
+    name: insure-me
+    state: absent
 
     - name: Run Insurance App container
       docker_container:
@@ -34,5 +39,6 @@
         image: shubhamgunjal1619/insure-me:3.0
         state: started
         restart_policy: always
+        recreate: yes
         published_ports:
           - "8084:8081"
