@@ -37,12 +37,13 @@ node {
     }
 
     stage('Push to DockerHub') {
-        withCredentials([string(credentialsId: 'docker-credentials', variable: 'dockerHubPassword')]) {
-            sh """
-                echo $dockerHubPassword | ${dockerCMD} login -u shubhamgunjal1619 --password-stdin
-                ${dockerCMD} push shubhamgunjal1619/insure-me:${tagName}
-            """
-        }
+        withCredentials([usernamePassword(credentialsId: 'docker-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+    sh """
+        echo $DOCKER_PASS | ${dockerCMD} login -u $DOCKER_USER --password-stdin
+        ${dockerCMD} push shubhamgunjal1619/insure-me:${tagName}
+    """
+     }
+
     }
 
     stage('Configure and Deploy to the Test Server') {
