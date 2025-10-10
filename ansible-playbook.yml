@@ -40,4 +40,4 @@
         recreate: yes
         force_kill: yes
         published_ports:
-          - "8084:8080"
+          - "8084:8081"
