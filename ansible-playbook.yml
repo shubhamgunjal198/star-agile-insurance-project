@@ -7,31 +7,29 @@
     - name: Update apt cache
       apt:
         update_cache: yes
-      tags: update
 
     - name: Install Docker
       apt:
         name: docker.io
         state: present
-      tags: docker
 
     - name: Enable and start Docker service
       systemd:
         name: docker
         state: started
         enabled: yes
-      tags: docker
 
     - name: Pull the Docker image
       docker_image:
         name: shubhamgunjal1619/insure-me
         tag: "3.0"
         source: pull
-        
+
     - name: Remove existing container if any
       docker_container:
         name: insure-me
         state: absent
+        force_kill: yes   
 
     - name: Run Insurance App container
       docker_container:
