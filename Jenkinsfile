@@ -1,17 +1,20 @@
 node {
 
-    def mavenHome
-    def mavenCMD
-    def dockerCMD
-    def tagName
+    // def mavenHome
+    // def mavenCMD
+    // def dockerCMD
+    // def tagName
 
-    stage('Prepare Environment') {
-        echo 'Initializing environment variables...'
-        mavenHome = tool name: 'maven', type: 'maven'
-        mavenCMD = "${mavenHome}/bin/mvn"
-        dockerCMD = '/usr/bin/docker'  // System Docker path
-        tagName = "3.0"
-    }
+    // stage('Prepare Environment') {
+    //     echo 'Initializing environment variables...'
+    //     mavenHome = tool name: 'maven', type: 'maven'
+    //     mavenCMD = "${mavenHome}/bin/mvn"
+    //     dockerCMD = '/usr/bin/docker'  // System Docker path
+    //     tagName = "3.0"
+    // }
+    def mavenCMD = '/usr/bin/mvn'          // Use system Maven
+    def dockerCMD = '/usr/bin/docker'      // Use system Docker
+    def tagName = "3.0"
 
     stage('Git Code Checkout') {
         try {
