@@ -38,5 +38,6 @@
         state: started
         restart_policy: always
         recreate: yes
+        force_kill: yes
         published_ports:
           - "8084:8080"
