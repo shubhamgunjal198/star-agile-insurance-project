@@ -72,7 +72,7 @@ node {
             disableHostKeyChecking: true,
             installation: 'ansible',
             inventory: '/etc/ansible/hosts',
-            playbook: 'ansible-playbook.yml'
+            playbook: 'ansible-playbook1.yml'
         )
     }
 }
